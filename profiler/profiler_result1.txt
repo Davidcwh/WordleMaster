@@ -1,0 +1,117 @@
+         11496246241 function calls in 3071.873 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.001    0.001    0.004    0.004 Queue.py:1(<module>)
+      364    0.000    0.000    0.001    0.000 Queue.py:107(put)
+        1    0.000    0.000    0.000    0.000 Queue.py:13(Empty)
+      364    0.000    0.000    0.001    0.000 Queue.py:150(get)
+        1    0.000    0.000    0.000    0.000 Queue.py:17(Full)
+        1    0.000    0.000    0.000    0.000 Queue.py:197(_init)
+      729    0.000    0.000    0.000    0.000 Queue.py:200(_qsize)
+      364    0.000    0.000    0.000    0.000 Queue.py:204(_put)
+      364    0.000    0.000    0.000    0.000 Queue.py:208(_get)
+        1    0.000    0.000    0.000    0.000 Queue.py:21(Queue)
+        1    0.000    0.000    0.000    0.000 Queue.py:212(PriorityQueue)
+        1    0.000    0.000    0.000    0.000 Queue.py:231(LifoQueue)
+        1    0.000    0.000    0.000    0.000 Queue.py:26(__init__)
+      365    0.000    0.000    0.000    0.000 Queue.py:86(qsize)
+        1    0.000    0.000    0.000    0.000 __future__.py:48(<module>)
+        1    0.000    0.000    0.000    0.000 __future__.py:74(_Feature)
+        7    0.000    0.000    0.000    0.000 __future__.py:75(__init__)
+        1    0.001    0.001    0.005    0.005 __init__.py:1(<module>)
+        1    0.002    0.002    0.002    0.002 collections.py:11(<module>)
+        1    0.000    0.000    0.000    0.000 collections.py:38(OrderedDict)
+        1    0.000    0.000    0.000    0.000 collections.py:407(Counter)
+        1    0.002    0.002    0.002    0.002 heapq.py:31(<module>)
+        1    0.003    0.003    0.003    0.003 heapq.py:436(nlargest)
+        1    0.000    0.000    0.000    0.000 keyword.py:11(<module>)
+        2    0.000    0.000    0.000    0.000 re.py:192(compile)
+        2    0.000    0.000    0.000    0.000 re.py:230(_compile)
+        1    0.004    0.004    0.011    0.011 solver.py:1(<module>)
+1302291675  191.177    0.000 2945.109    0.000 solver.py:15(__is_word_eliminated)
+   562545  125.841    0.000 3071.296    0.005 solver.py:19(__get_remaining_words)
+        1    0.000    0.000    0.002    0.002 solver.py:26(generate_all_results)
+     2315    0.376    0.000 3071.826    1.327 solver.py:42(__calculate_word_expected_info)
+        1    0.000    0.000    0.000    0.000 solver.py:5(Solver)
+        1    0.000    0.000    0.002    0.002 solver.py:6(__init__)
+        1    0.011    0.011 3071.848 3071.848 solver.py:63(__get_expected_info_heap)
+        1    0.002    0.002 3071.853 3071.853 solver.py:71(get_best_n_guesses)
+1302291675 2300.396    0.000 2753.931    0.000 solver.py:78(generate_result)
+        2    0.000    0.000    0.000    0.000 sre_compile.py:433(_compile_info)
+        4    0.000    0.000    0.000    0.000 sre_compile.py:546(isstring)
+        2    0.000    0.000    0.000    0.000 sre_compile.py:552(_code)
+        2    0.000    0.000    0.000    0.000 sre_compile.py:567(compile)
+        2    0.000    0.000    0.000    0.000 sre_compile.py:64(_compile)
+       22    0.000    0.000    0.000    0.000 sre_parse.py:150(append)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:152(getwidth)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:190(__init__)
+       28    0.000    0.000    0.000    0.000 sre_parse.py:194(__next)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:207(match)
+       26    0.000    0.000    0.000    0.000 sre_parse.py:213(get)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:336(_parse_sub)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:414(_parse)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:68(__init__)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:725(parse)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:93(__init__)
+        1    0.001    0.001    0.003    0.003 threading.py:1(<module>)
+        1    0.000    0.000    0.000    0.000 threading.py:1048(_Timer)
+        1    0.000    0.000    0.000    0.000 threading.py:1078(_MainThread)
+        1    0.000    0.000    0.000    0.000 threading.py:1080(__init__)
+        1    0.000    0.000    0.000    0.000 threading.py:1087(_set_daemon)
+        1    0.000    0.000    0.000    0.000 threading.py:1118(_DummyThread)
+        1    0.000    0.000    0.000    0.000 threading.py:125(_RLock)
+        5    0.000    0.000    0.000    0.000 threading.py:242(Condition)
+        1    0.000    0.000    0.000    0.000 threading.py:255(_Condition)
+        5    0.000    0.000    0.000    0.000 threading.py:260(__init__)
+        1    0.000    0.000    0.000    0.000 threading.py:285(__enter__)
+        1    0.000    0.000    0.000    0.000 threading.py:288(__exit__)
+      729    0.000    0.000    0.000    0.000 threading.py:300(_is_owned)
+      729    0.000    0.000    0.000    0.000 threading.py:373(notify)
+        1    0.000    0.000    0.000    0.000 threading.py:400(notifyAll)
+        1    0.000    0.000    0.000    0.000 threading.py:423(_Semaphore)
+        1    0.000    0.000    0.000    0.000 threading.py:515(_BoundedSemaphore)
+        1    0.000    0.000    0.000    0.000 threading.py:542(Event)
+        1    0.000    0.000    0.000    0.000 threading.py:552(_Event)
+        1    0.000    0.000    0.000    0.000 threading.py:561(__init__)
+        1    0.000    0.000    0.000    0.000 threading.py:57(_Verbose)
+        1    0.000    0.000    0.000    0.000 threading.py:576(set)
+        7    0.000    0.000    0.000    0.000 threading.py:59(__init__)
+        1    0.000    0.000    0.000    0.000 threading.py:631(Thread)
+      729    0.000    0.000    0.000    0.000 threading.py:64(_note)
+        1    0.000    0.000    0.000    0.000 threading.py:647(__init__)
+        1    0.000    0.000    0.000    0.000 threading.py:780(_set_ident)
+        1    0.000    0.000    0.000    0.000 warnings.py:67(filterwarnings)
+        1    0.002    0.002 3071.873 3071.873 wordlemaster.py:1(<module>)
+        1    0.000    0.000    0.001    0.001 wordlemaster.py:4(init_word_list)
+        1    0.005    0.005 3071.858 3071.858 wordlemaster.py:45(print_all_words_expected_info)
+     2315    0.011    0.000    0.011    0.000 {_heapq.heappush}
+        2    0.000    0.000    0.000    0.000 {_sre.compile}
+       12    0.000    0.000    0.000    0.000 {_sre.getlower}
+       10    0.000    0.000    0.000    0.000 {isinstance}
+        1    0.000    0.000    0.000    0.000 {issubclass}
+3908001283   87.624    0.000   87.624    0.000 {len}
+   215691    0.056    0.000    0.056    0.000 {math.log}
+        1    0.000    0.000    0.000    0.000 {method '__enter__' of 'thread.lock' objects}
+        1    0.000    0.000    0.000    0.000 {method '__exit__' of 'thread.lock' objects}
+     1822    0.000    0.000    0.000    0.000 {method 'acquire' of 'thread.lock' objects}
+      364    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+  5359558    0.346    0.000    0.346    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        2    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
+        2    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+      364    0.000    0.000    0.000    0.000 {method 'popleft' of 'collections.deque' objects}
+        1    0.000    0.000    0.000    0.000 {method 'readlines' of 'file' objects}
+     1093    0.000    0.000    0.000    0.000 {method 'release' of 'thread.lock' objects}
+1070633214   91.584    0.000   91.584    0.000 {method 'replace' of 'str' objects}
+     2315    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 {method 'setter' of 'property' objects}
+        4    0.000    0.000    0.000    0.000 {min}
+        1    0.000    0.000    0.000    0.000 {open}
+       21    0.000    0.000    0.000    0.000 {ord}
+3906875026  274.424    0.000  274.424    0.000 {range}
+        1    0.001    0.001    0.001    0.001 {sorted}
+        4    0.000    0.000    0.000    0.000 {thread.allocate_lock}
+        2    0.000    0.000    0.000    0.000 {thread.get_ident}
