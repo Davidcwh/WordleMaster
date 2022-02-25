@@ -2,11 +2,13 @@ import math
 import heapq
 from queue import Queue
 import json
+import pickle
 
 class Solver:
     def __init__(self, words):
         self.init_words = words
         self.words = list(words)
+        self.words_set = set(self.words)
         self.all_possible_results = self.load_json_object('input/all_possible_results.json')
         self.guess_to_answer_results = self.load_json_object('input/guess_to_answer_results.json')
 
@@ -17,12 +19,30 @@ class Solver:
         with open(filename, 'r') as fp:
             return json.load(fp)
 
-    def save_json_files(self):
-        with open('input/all_possible_results.json', 'w') as fp:
-            json.dump(self.all_possible_results, fp)
+    def save_json_object(self, filename, data):
+        with open(filename, 'w') as fp:
+            json.dump(data, fp)
 
-        with open('input/guess_to_answer_results.json', 'w') as fp:
-            json.dump(self.guess_to_answer_results, fp)
+    def save_pickle_object(self, filename, data):
+        with open(filename, 'wb') as handle:
+            pickle.dump(data, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+    def load_pickle_object(self, filename):
+        with open(filename, 'rb') as handle:
+            return pickle.load(handle)
+
+    def generate_guess_to_result_words(self, words, results):
+        data = dict()
+        for word in words:
+            data[word] = dict()
+            for result in results:
+                data[word][result] = set()
+                for other_word in words:
+                    if not self.__is_word_eliminated(word, other_word, result):
+                        data[word][result].add(other_word)
+
+        return data
+        
         
     # not used as it takes too long (1min~)
     def __read_guess_results(self):
@@ -59,12 +79,12 @@ class Solver:
     # returns true if a word is eliminated as the solution based on the given guess word and result of the guess
     def __is_word_eliminated(self, guess, word, result):
         # print(guess + ", " + word + ", " + result)
-        if guess not in self.guess_to_answer_results.keys():
-            word_result = self.__generate_guess_answer_results([guess], self.words)
-            self.guess_to_answer_results[guess] = word_result[guess]
-            # actual_result = self.generate_result(guess, word) # when guess is not in word list
-        
-        actual_result = self.guess_to_answer_results[guess][word]
+        actual_result = None
+
+        if guess not in self.words_set:
+            actual_result = self.generate_result(guess, word)
+        else:
+            actual_result = self.guess_to_answer_results[guess][word]
 
         return  actual_result != result
 
@@ -152,10 +172,12 @@ class Solver:
         is_first_guess = True
         while True:
             print("Getting next best guess...\n")
-            guesses = [(9.73303625692, 'slate'), (9.72313228696, 'least'), (9.70347260351, 'crate'), (9.69975777415, 'trail'), (9.69912049258, 'trace'), (9.69551156031, 'leant'), (9.69509413108, 'train'), (9.68085216726, 'stale'), (9.67042004581, 'irate'), (9.6647170667, 'crane')]
+            guesses = None
             if not is_first_guess:
                 guesses = self.get_best_n_guesses(10)
             else:
+                initial_guesses = self.load_json_object('input/second_step_expected_info.json')
+                guesses = heapq.nlargest(10, initial_guesses)
                 is_first_guess = False
 
             print('Next Top ' + str(len(guesses)) + ' guesses:')

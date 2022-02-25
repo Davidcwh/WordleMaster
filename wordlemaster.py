@@ -53,19 +53,14 @@ def print_all_words_expected_info(solver):
         print(expect_info_word[1] + " " + str(expect_info_word[0]))
 
 def parse_input():
-    data = dict()
-    with open('input/input.in', 'r') as f:
+    data = []
+    with open('data/expected_info_second_step.txt', 'r') as f:
         lines = f.readlines()
         for i in range(len(lines)):
             line = lines[i].split()
-            word = line[3][1:6]
-            result = line[6][1:6]
-            info = float(line[12].rstrip("\n"))
-
-            if word not in data.keys():
-                data[word] = dict()
-            
-            data[word][result] = info
+            word = line[0]
+            expected_info = float(line[1].rstrip("\n"))
+            heapq.heappush(data, (expected_info, word))
     return data
 
 if __name__ == "__main__":
