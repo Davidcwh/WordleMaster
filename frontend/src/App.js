@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 import WordGrid from './components/WordGrid';
+import Title from './components/Title';
+import { Grid } from '@mui/material'
 
 function App() {
 	const [words, setWords] = useState(["", "", "", "", "", ""])
@@ -104,7 +106,23 @@ function App() {
 			onKeyDown={handleKeyDown}
 			tabindex="0">
 		<header className="App-header">
-			<WordGrid words={words} colors={colors}/>
+			
+
+			<Grid 
+				container 
+				spacing={5}
+				direction="column"
+				justifyContent="center"
+				alignItems="center"
+			>
+				<Grid item>
+					<Title/>
+				</Grid>
+
+				<Grid item>
+					<WordGrid words={words} colors={colors}/>
+				</Grid>
+			</Grid>
 		</header>
 		</div>
 	);
