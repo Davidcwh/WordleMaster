@@ -158,7 +158,7 @@ function App() {
 		<header className="App-header">
 			<Grid 
 				container 
-				spacing={2}
+				spacing={10}
 				direction="column"
 				justifyContent="center"
 				alignItems="space-between"
