@@ -2,7 +2,8 @@ import { FlapDisplay, Presets } from 'react-split-flap-effect'
 import { Grid } from '@mui/material'
 
 const SplitFlapList = ({
-    words
+    words,
+    isLoading
 }) => {
     return <>
         <Grid 
@@ -23,7 +24,7 @@ const SplitFlapList = ({
 
             <Grid item>
                 {words.map(row => {
-                    const rowData = row.word + " " + row.expectedInfo.toFixed(3)
+                    const rowData = !isLoading ? row.word + " " + row.expectedInfo.toFixed(3) : "loading..."
                     return (
                         <FlapDisplay
                             className={`M dark`}

@@ -14,6 +14,7 @@ function App() {
     const [currWordIndex, setCurrWordIndex] = useState(0)
 	const [isEnteringResult, setIsEnteringResult] =  useState(false)
 	const [currLetterIndex, setCurrLetterIndex] = useState(0)
+	const [isReccWordsLoading, setIsReccWordsLoading] = useState(false)
 	const [reccWords, setReccWords] = useState([
 		createReccWordItem('slate', 9.73303625692),
 		createReccWordItem('least', 9.72313228696),
@@ -27,7 +28,6 @@ function App() {
 		createReccWordItem('crane', 9.6647170667)
 	])
 
-	
 
 	const reccWords2 = [
 		createReccWordItem('court', 4.70621893765),
@@ -81,7 +81,6 @@ function App() {
 				} else if(currWordIndex == 2) {
 					setReccWords(reccWords4)
 				}
-
 
 				setIsEnteringResult(false)
 				setCurrWordIndex(currWordIndex + 1)
@@ -181,7 +180,7 @@ function App() {
 
 						<Grid item >
 							{/* <InfoList words={reccWords}/> */}
-							<SplitFlapList words={reccWords}/>
+							<SplitFlapList words={reccWords} isLoading={isReccWordsLoading}/>
 						</Grid>
 					</Grid>
 				</Grid>
