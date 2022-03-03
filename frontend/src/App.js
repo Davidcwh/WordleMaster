@@ -4,6 +4,8 @@ import './App.css';
 import WordGrid from './components/WordGrid';
 import Title from './components/Title';
 import InfoList from './components/InfoList';
+import SplitFlapList from './components/SplitFlapList';
+
 const createReccWordItem = (word, expectedInfo) => {
 	return { word, expectedInfo}
 }
@@ -178,7 +180,8 @@ function App() {
 						</Grid>
 
 						<Grid item >
-							<InfoList words={reccWords}/>
+							{/* <InfoList words={reccWords}/> */}
+							<SplitFlapList words={reccWords}/>
 						</Grid>
 					</Grid>
 				</Grid>
