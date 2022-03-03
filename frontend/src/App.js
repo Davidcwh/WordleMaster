@@ -7,7 +7,7 @@ import InfoList from './components/InfoList';
 import SplitFlapList from './components/SplitFlapList';
 
 const createReccWordItem = (word, expectedInfo) => {
-	return { word, expectedInfo}
+	return { word, expectedInfo }
 }
 function App() {
 	const [words, setWords] = useState(["", "", "", "", "", ""])
@@ -74,14 +74,17 @@ function App() {
 			if(!isEnteringResult) {
 				setIsEnteringResult(true)
 			} else if(currLetterIndex === 5) {
-				if(currWordIndex == 0) {
+				if(currWordIndex === 0) {
 					setReccWords(reccWords2)
-				} else if(currWordIndex == 1) {
+					setIsReccWordsLoading(true)
+				} else if(currWordIndex === 1) {
+					setIsReccWordsLoading(false)
 					setReccWords(reccWords3)
-				} else if(currWordIndex == 2) {
+				} else if(currWordIndex === 2) {
 					setReccWords(reccWords4)
 				}
 
+				
 				setIsEnteringResult(false)
 				setCurrWordIndex(currWordIndex + 1)
 				setCurrLetterIndex(0)
@@ -180,7 +183,11 @@ function App() {
 
 						<Grid item >
 							{/* <InfoList words={reccWords}/> */}
-							<SplitFlapList words={reccWords} isLoading={isReccWordsLoading}/>
+							<SplitFlapList 
+								words={reccWords} 
+								setWords={words => setReccWords(words)} 
+								isLoading={isReccWordsLoading}
+							/>
 						</Grid>
 					</Grid>
 				</Grid>
