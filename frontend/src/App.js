@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import './App.css';
 import WordGrid from './components/WordGrid';
 import Title from './components/Title';
-import InfoList from './components/InfoList';
 import SplitFlapList from './components/SplitFlapList';
+import API from './API';
 
 const createReccWordItem = (word, expectedInfo) => {
 	return { word, expectedInfo }
@@ -28,28 +28,7 @@ function App() {
 		createReccWordItem('crane', 9.6647170667)
 	])
 
-
-	const reccWords2 = [
-		createReccWordItem('court', 4.70621893765),
-		createReccWordItem('truly', 4.62323099386),
-		createReccWordItem('thorn', 4.61750196021),
-		createReccWordItem('torch', 4.56908098868),
-		createReccWordItem('front', 4.47626177614),
-		createReccWordItem('throw', 4.46492864587),
-		createReccWordItem('grunt', 4.41059357441),
-		createReccWordItem('brunt', 4.40207085054),
-		createReccWordItem('corny', 4.39658072233),
-		createReccWordItem('troop', 4.38977147733)
-	];
-
-	const reccWords3 = [
-		createReccWordItem('mourn', 1.0),
-		createReccWordItem('gourd', 1.0)
-	];
-
-	const reccWords4 = [
-		createReccWordItem('mourn', 1.0)
-	];
+	const [wordList, setWordList] = useState([]);
 
 	const [colors, setColors] = useState([
 		["", "", "", "", ""],
@@ -59,6 +38,30 @@ function App() {
 		["", "", "", "", ""],
 		["", "", "", "", ""]
 	])
+
+	const getResultFromColors = () => {
+		let result = ""
+		colors[currWordIndex].forEach((value, index, array) => {
+			result = result + value.substring(0, 1)
+		})
+
+		return result
+	}
+
+	const handleAPICall = async () => {
+		const guess = words[currWordIndex]
+		const result = getResultFromColors()
+		setIsReccWordsLoading(true)
+		console.log(wordList)
+		const rawResponse = await API.get_best_guesses(wordList, guess, result).catch(error => console.log(error))
+		const response = await rawResponse.json()
+		console.log(response)
+		const { remainingWords, bestGuesses} = response
+		console.log(bestGuesses)
+		setIsReccWordsLoading(false)
+		setReccWords(bestGuesses)
+		setWordList(remainingWords)
+	}
 
 	const handleKeyDown = event => {
 		const currentInput = event.key
@@ -70,25 +73,14 @@ function App() {
 		} 
 		
 		// Only increment word index after pressing enter
-		if(currentInput === 'Enter' && currWordIndex <  5 && words[currWordIndex].length === 5) {
+		if(currentInput === 'Enter' && currWordIndex < 6 && words[currWordIndex].length === 5) {
 			if(!isEnteringResult) {
 				setIsEnteringResult(true)
 			} else if(currLetterIndex === 5) {
-				if(currWordIndex === 0) {
-					setReccWords(reccWords2)
-					setIsReccWordsLoading(true)
-				} else if(currWordIndex === 1) {
-					setIsReccWordsLoading(false)
-					setReccWords(reccWords3)
-				} else if(currWordIndex === 2) {
-					setReccWords(reccWords4)
-				}
-
-				
 				setIsEnteringResult(false)
 				setCurrWordIndex(currWordIndex + 1)
 				setCurrLetterIndex(0)
-				// Make call to API here
+				handleAPICall()
 			}
 			return
 		} 
@@ -153,6 +145,11 @@ function App() {
 
 	}
 
+	useEffect(() => {
+		setWordList(require('.//data/wordle-answers-alphabetical.json'))
+		console.log(wordList)
+	}, []);
+
 	return (
 		<div className="App" 
 			onKeyDown={handleKeyDown}
@@ -182,7 +179,6 @@ function App() {
 						</Grid>
 
 						<Grid item >
-							{/* <InfoList words={reccWords}/> */}
 							<SplitFlapList 
 								words={reccWords} 
 								setWords={words => setReccWords(words)} 

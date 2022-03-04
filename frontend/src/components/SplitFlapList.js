@@ -71,7 +71,8 @@ const SplitFlapList = ({
 
             <Grid item>
                 {words.map((row, index) => {
-                    const rowData = !isLoading ? row.word + " " + row.expectedInfo.toFixed(3) : row.word
+                    console.log(row)
+                    const rowData = !isLoading && row.expectedInfo ? row.word + " " + (row.expectedInfo).toFixed(3) : row.word
                     return (
                         <FlapDisplay
                             key={index}
