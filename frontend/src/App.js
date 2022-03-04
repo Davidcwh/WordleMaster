@@ -156,7 +156,7 @@ function App() {
 	return (
 		<div className="App" 
 			onKeyDown={handleKeyDown}
-			tabindex="0">
+			tabIndex="0">
 		<header className="App-header">
 			<Grid 
 				container 
