@@ -52,7 +52,7 @@ function App() {
 		const guess = words[currWordIndex]
 		const result = getResultFromColors()
 		setIsReccWordsLoading(true)
-		console.log(wordList)
+
 		const rawResponse = await API.get_best_guesses(wordList, guess, result).catch(error => console.log(error))
 		const response = await rawResponse.json()
 		console.log(response)
@@ -65,8 +65,8 @@ function App() {
 
 	const handleKeyDown = event => {
 		const currentInput = event.key
-		console.log(currWordIndex)
-		console.log(words)
+		// console.log(currWordIndex)
+		// console.log(words)
 
 		if(currentInput === 'Backspace') {
 			handleBackspace()
@@ -147,7 +147,6 @@ function App() {
 
 	useEffect(() => {
 		setWordList(require('.//data/wordle-answers-alphabetical.json'))
-		console.log(wordList)
 	}, []);
 
 	return (
