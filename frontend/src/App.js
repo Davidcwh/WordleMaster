@@ -142,7 +142,7 @@ function App() {
 
 		if(isEnteringResult) {
 			if(currLetterIndex > 0) {
-				changeColorCell("", currLetterIndex - 1)
+				changeColorCell(EMPTY_STRING, currLetterIndex - 1)
 				setCurrLetterIndex(currLetterIndex - 1)
 			} else {
 				setIsEnteringResult(false)
