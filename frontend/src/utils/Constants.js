@@ -1,0 +1,31 @@
+const BACKSPACE = 'Backspace'
+const ENTER = 'Enter'
+const ALPAHBET_LOWERCASE = 'abcdefghijklmonpqrstuvwxyz'
+const ALPAHBET_UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const RESULT_GREEN_KEY = 'g'
+const RESULT_YELLOW_KEY = 'y'
+const RESULT_BLACK_KEY = 'b'
+const RESULT_GREEN_VALUE = 'green'
+const RESULT_YELLOW_VALUE = 'yellow'
+const RESULT_BLACK_VALUE = 'black'
+const EMPTY_STRING = ''
+const LOADING = 'loading...'
+const NUM_GUESSES = 6
+const WORD_LENGTH = 5
+
+export {
+    BACKSPACE,
+    ENTER,
+    ALPAHBET_LOWERCASE,
+    ALPAHBET_UPPERCASE,
+    RESULT_GREEN_KEY,
+    RESULT_YELLOW_KEY,
+    RESULT_BLACK_KEY,
+    RESULT_GREEN_VALUE,
+    RESULT_YELLOW_VALUE,
+    RESULT_BLACK_VALUE,
+    EMPTY_STRING,
+    LOADING,
+    NUM_GUESSES,
+    WORD_LENGTH
+}

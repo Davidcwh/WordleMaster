@@ -1,6 +1,7 @@
 import { FlapDisplay, Presets } from 'react-split-flap-effect'
 import { Grid } from '@mui/material'
 import { useEffect, useState } from 'react'
+import { LOADING } from '../utils/Constants'
 
 const SplitFlapList = ({
     words,
@@ -34,9 +35,9 @@ const SplitFlapList = ({
                 if(offset < 0) {
                     value = tenEmptySpaces
                 } else if(loadingIndex < limit) {
-                    value = "loading...".substring(0, (loadingIndex - index * 10)) + tenEmptySpaces.substring((loadingIndex - index * 10)) 
+                    value = LOADING.substring(0, (loadingIndex - index * 10)) + tenEmptySpaces.substring((loadingIndex - index * 10)) 
                 } else {
-                    value = "loading..."
+                    value = LOADING
                 }
     
                 return { word: value}
@@ -71,7 +72,6 @@ const SplitFlapList = ({
 
             <Grid item>
                 {words.map((row, index) => {
-                    console.log(row)
                     const rowData = !isLoading && row.expectedInfo ? row.word + " " + (row.expectedInfo).toFixed(3) : row.word
                     return (
                         <FlapDisplay

@@ -4,43 +4,55 @@ import './App.css';
 import WordGrid from './components/WordGrid';
 import Title from './components/Title';
 import SplitFlapList from './components/SplitFlapList';
-import API from './API';
+import API from './utils/API';
+import FileReader from './utils/FileReader';
+import {
+	BACKSPACE,
+    ENTER,
+    ALPAHBET_LOWERCASE,
+    RESULT_GREEN_KEY,
+    RESULT_YELLOW_KEY,
+    RESULT_BLACK_KEY,
+    RESULT_GREEN_VALUE,
+    RESULT_YELLOW_VALUE,
+    RESULT_BLACK_VALUE,
+    EMPTY_STRING,
+	NUM_GUESSES,
+    WORD_LENGTH
+} from './utils/Constants';
 
 const createReccWordItem = (word, expectedInfo) => {
 	return { word, expectedInfo }
 }
+
+const generateEmptyStringArray = length => {
+	const arr = []
+	for(let i = 0; i < length; i++) {
+		arr.push(EMPTY_STRING)
+	}
+	return arr
+}
+
+const generateEmptyString2DArray = (row, col) => {
+	const arr = []
+	for(let r = 0; r < row; r++) {
+		arr.push(generateEmptyStringArray(col))
+	}
+	return arr
+}
+
 function App() {
-	const [words, setWords] = useState(["", "", "", "", "", ""])
+	const [words, setWords] = useState(generateEmptyStringArray(NUM_GUESSES))
     const [currWordIndex, setCurrWordIndex] = useState(0)
 	const [isEnteringResult, setIsEnteringResult] =  useState(false)
 	const [currLetterIndex, setCurrLetterIndex] = useState(0)
 	const [isReccWordsLoading, setIsReccWordsLoading] = useState(false)
-	const [reccWords, setReccWords] = useState([
-		createReccWordItem('slate', 9.73303625692),
-		createReccWordItem('least', 9.72313228696),
-		createReccWordItem('crate', 9.70347260351),
-		createReccWordItem('trail', 9.69975777415),
-		createReccWordItem('trace', 9.69912049258),
-		createReccWordItem('leant', 9.69551156031),
-		createReccWordItem('train', 9.69509413108),
-		createReccWordItem('stale', 9.68085216726),
-		createReccWordItem('irate', 9.67042004581),
-		createReccWordItem('crane', 9.6647170667)
-	])
-
+	const [reccWords, setReccWords] = useState([])
 	const [wordList, setWordList] = useState([]);
-
-	const [colors, setColors] = useState([
-		["", "", "", "", ""],
-		["", "", "", "", ""],
-		["", "", "", "", ""],
-		["", "", "", "", ""],
-		["", "", "", "", ""],
-		["", "", "", "", ""]
-	])
+	const [colors, setColors] = useState(generateEmptyString2DArray(NUM_GUESSES, WORD_LENGTH))
 
 	const getResultFromColors = () => {
-		let result = ""
+		let result = EMPTY_STRING
 		colors[currWordIndex].forEach((value, index, array) => {
 			result = result + value.substring(0, 1)
 		})
@@ -65,18 +77,16 @@ function App() {
 
 	const handleKeyDown = event => {
 		const currentInput = event.key
-		// console.log(currWordIndex)
-		// console.log(words)
 
-		if(currentInput === 'Backspace') {
+		if(currentInput === BACKSPACE) {
 			handleBackspace()
 		} 
 		
 		// Only increment word index after pressing enter
-		if(currentInput === 'Enter' && currWordIndex < 6 && words[currWordIndex].length === 5) {
+		if(currentInput === ENTER && currWordIndex < NUM_GUESSES && words[currWordIndex].length === WORD_LENGTH) {
 			if(!isEnteringResult) {
 				setIsEnteringResult(true)
-			} else if(currLetterIndex === 5) {
+			} else if(currLetterIndex === WORD_LENGTH) {
 				setIsEnteringResult(false)
 				setCurrWordIndex(currWordIndex + 1)
 				setCurrLetterIndex(0)
@@ -85,10 +95,10 @@ function App() {
 			return
 		} 
 		
-		if("abcdefghijklmonpqrstuvwxyz".includes(currentInput)){
+		if(ALPAHBET_LOWERCASE.includes(currentInput)){
 			if(!isEnteringResult) {
 				handleNewLetter(currentInput)
-			} else if(currLetterIndex < 5) {
+			} else if(currLetterIndex < WORD_LENGTH) {
 				handleNewResult(currentInput)
 			}
 		}
@@ -105,16 +115,16 @@ function App() {
 	}
 
 	const handleNewResult = result => {
-		if(!"gyb".includes(result)) {
+		if(!(RESULT_GREEN_KEY + RESULT_YELLOW_KEY + RESULT_BLACK_KEY).includes(result)) {
 			return
 		}
 
-		if(result === 'g') {
-			changeColorCell("green", currLetterIndex)
-		} else if(result === 'y') {
-			changeColorCell("yellow", currLetterIndex)
-		} else if(result === 'b') {
-			changeColorCell("black", currLetterIndex)
+		if(result === RESULT_GREEN_KEY) {
+			changeColorCell(RESULT_GREEN_VALUE, currLetterIndex)
+		} else if(result === RESULT_YELLOW_KEY) {
+			changeColorCell(RESULT_YELLOW_VALUE, currLetterIndex)
+		} else if(result === RESULT_BLACK_KEY) {
+			changeColorCell(RESULT_BLACK_VALUE, currLetterIndex)
 		}
 
 		setCurrLetterIndex(currLetterIndex + 1)
@@ -146,7 +156,10 @@ function App() {
 	}
 
 	useEffect(() => {
-		setWordList(require('.//data/wordle-answers-alphabetical.json'))
+		setWordList(FileReader.read(process.env.REACT_APP_WORD_LIST_FILE))
+		setReccWords(FileReader.read(process.env.REACT_APP_INITIAL_BEST_GUESSES_FILE).map(item => {
+			return createReccWordItem(item[1], item[0])
+		}).slice(0, 10))
 	}, []);
 
 	return (
@@ -168,7 +181,7 @@ function App() {
 				<Grid item>
 					<Grid 
 						container 
-						spacing={6}
+						spacing={NUM_GUESSES}
 						direction="row"
 						justifyContent="center"
 						alignItems="flex-start"

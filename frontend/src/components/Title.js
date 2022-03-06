@@ -1,17 +1,17 @@
 import { FlapDisplay } from 'react-split-flap-effect'
-const Title = () => {
-    const title = "wordle master"
+import { ALPAHBET_UPPERCASE } from '../utils/Constants';
 
+const Title = () => {
     return <>
             <FlapDisplay
                 className={`XL darkBordered`}
-                chars={'ABCDEFGHIJKLMNOPQRSTUVWXYZ '}
+                chars={ALPAHBET_UPPERCASE + ' '}
                 length={10}
                 value={" wordle   "}
             />
             <FlapDisplay
                 className={`XL darkBordered`}
-                chars={'ABCDEFGHIJKLMNOPQRSTUVWXYZ '}
+                chars={ALPAHBET_UPPERCASE + ' '}
                 length={10}
                 value={"   master "}
             />
