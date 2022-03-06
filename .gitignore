@@ -26,3 +26,5 @@
 /backend/venv
 /backend/.flaskenv
 /backend/__pycache__
+
+/scripts
