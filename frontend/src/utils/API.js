@@ -11,6 +11,8 @@ const get_best_guesses = (words, guess, result) => {
     })
 }
 
-export default {
+const API = {
     get_best_guesses,
 }
+
+export default API

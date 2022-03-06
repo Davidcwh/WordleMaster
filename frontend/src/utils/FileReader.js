@@ -2,6 +2,8 @@ const read = fileName => {
     return require(`.//../data/${fileName}`)
 }
 
-export default {
+const FileReader = {
     read
 }
+
+export default FileReader
