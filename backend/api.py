@@ -9,7 +9,6 @@ def load_json_object(filename):
         return json.load(fp)
 
 def init_word_list():
-    # with open('input/wordle-all-words.txt', 'r') as f:
     with open('data/wordle-answers-alphabetical.txt', 'r') as f:
         lines = f.readlines()
         for i in range(len(lines)):
@@ -35,8 +34,6 @@ def generate_result(guess, answer):
             answer = answer.replace(guess[i], '_', 1) # replace first occurence
             guess = guess[:i] + '@' + guess[i + 1:]
 
-    # print(guess)
-    # print(answer)
     for i in range(len(guess)):
         if guess[i] != '#' and guess[i] != '@' and guess[i] not in answer:
             result = result[:i] + 'b' + result[i + 1:]
@@ -44,7 +41,6 @@ def generate_result(guess, answer):
     return result
 
 def is_word_eliminated(guess, word, result):
-    # print(guess + ", " + word + ", " + result)
     actual_result = None
 
     if guess not in init_words_set:
@@ -79,7 +75,6 @@ def get_expected_info_heap(words):
     heap = []
     for word in words:
         expected_info = calculate_word_expected_info(words, word)
-        # print("====== [" + word + "] " + "E[I] = " + str(expected_info))
         heapq.heappush(heap, (expected_info, word))
     return heap
 
@@ -105,5 +100,4 @@ def post_best_guesses():
     body["remainingWords"] = remaining_words
     body["bestGuesses"] = best_guesses
     response = jsonify(body)
-    # print(response)
     return response
