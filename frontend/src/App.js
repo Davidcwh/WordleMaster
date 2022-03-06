@@ -4,6 +4,7 @@ import './App.css';
 import WordGrid from './components/WordGrid';
 import Title from './components/Title';
 import SplitFlapList from './components/SplitFlapList';
+import InfoQuestionButton from './components/InfoQuestionButton';
 import API from './utils/API';
 import FileReader from './utils/FileReader';
 import {
@@ -162,6 +163,7 @@ function App() {
 		}).slice(0, 10))
 	}, []);
 
+
 	return (
 		<div className="App" 
 			onKeyDown={handleKeyDown}
@@ -169,35 +171,58 @@ function App() {
 		<header className="App-header">
 			<Grid 
 				container 
-				spacing={10}
-				direction="column"
-				justifyContent="center"
-				alignItems="space-between"
+				direction="row"
 			>
-				<Grid item>
-					<Title/>
+				<Grid item xs></Grid>
+
+				<Grid item xs="auto">
+						<Grid 
+							container 
+							spacing={10}
+							direction="column"
+							justifyContent="center"
+							alignItems="space-between"
+						>
+							<Grid item>
+								<Title/>
+							</Grid>
+
+							<Grid item>
+								<Grid 
+									container 
+									spacing={6}
+									direction="row"
+									justifyContent="center"
+									alignItems="flex-start"
+								>
+									<Grid item >
+										<WordGrid words={words} colors={colors}/>
+									</Grid>
+
+									<Grid item >
+										<SplitFlapList 
+											words={reccWords} 
+											setWords={words => setReccWords(words)} 
+											isLoading={isReccWordsLoading}
+										/>
+									</Grid>
+								</Grid>
+							</Grid>
+						</Grid>
 				</Grid>
 
-				<Grid item>
-					<Grid 
-						container 
-						spacing={NUM_GUESSES}
-						direction="row"
-						justifyContent="center"
-						alignItems="flex-start"
-					>
-						<Grid item >
-							<WordGrid words={words} colors={colors}/>
+				<Grid item xs>
+						<Grid 
+							container 
+							spacing={16}
+							direction="column"
+							justifyContent="flex-start"
+							alignItems="flex-start"
+						>
+							<Grid item></Grid>
+							<Grid item><InfoQuestionButton/></Grid>
+							
 						</Grid>
-
-						<Grid item >
-							<SplitFlapList 
-								words={reccWords} 
-								setWords={words => setReccWords(words)} 
-								isLoading={isReccWordsLoading}
-							/>
-						</Grid>
-					</Grid>
 				</Grid>
 			</Grid>
 		</header>
