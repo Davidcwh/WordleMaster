@@ -20,6 +20,7 @@ jobs:
           REACT_APP_GITHUB_LINK: ${{ secrets.REACT_APP_GITHUB_LINK }}
           REACT_APP_INITIAL_BEST_GUESSES_FILE: ${{ secrets.REACT_APP_INITIAL_BEST_GUESSES_FILE }}
           REACT_APP_WORD_LIST_FILE: ${{ secrets.REACT_APP_WORD_LIST_FILE }}
+          NODE_TLS_REJECT_UNAUTHORIZED: ${{ secrets.NODE_TLS_REJECT_UNAUTHORIZED }}
 
 
       - name: Deploy 🚀
