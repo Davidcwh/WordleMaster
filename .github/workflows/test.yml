@@ -12,7 +12,7 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
-          cd /frontend
+          cd frontend
           npm install
           npm run-script build
         env:
