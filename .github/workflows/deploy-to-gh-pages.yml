@@ -13,6 +13,7 @@ jobs:
       - name: Build 🔧
         run: |
           cd frontend
+          npm config set strict-ssl=false
           npm install
           npm run-script build
         env:
