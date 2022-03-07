@@ -1,6 +1,5 @@
 const backendDomain = process.env.REACT_APP_BACKEND_DOMAIN
-console.log(backendDomain)
-console.log('here3')
+
 const get_best_guesses = (words, guess, result) => {
     return fetch(`${backendDomain}/api/best-guesses`, {
         method: 'POST',
