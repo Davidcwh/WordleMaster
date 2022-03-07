@@ -3,6 +3,7 @@ console.log(backendDomain)
 const get_best_guesses = (words, guess, result) => {
     return fetch(`${backendDomain}/api/best-guesses`, {
         method: 'POST',
+        rejectUnauthorized: false,
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
