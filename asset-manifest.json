@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/WordleMaster/static/css/main.9714ea59.css",
-    "main.js": "/WordleMaster/static/js/main.04cf5420.js",
+    "main.js": "/WordleMaster/static/js/main.b87d9a29.js",
     "static/js/787.635508fe.chunk.js": "/WordleMaster/static/js/787.635508fe.chunk.js",
     "static/media/roboto-all-500-normal.woff": "/WordleMaster/static/media/roboto-all-500-normal.52cb737b682eb9661ee1.woff",
     "static/media/roboto-all-700-normal.woff": "/WordleMaster/static/media/roboto-all-700-normal.ef6d1d09b20b877fee4e.woff",
@@ -37,11 +37,11 @@
     "static/media/roboto-greek-ext-700-normal.woff2": "/WordleMaster/static/media/roboto-greek-ext-700-normal.9674bc0ae12c2551d9d1.woff2",
     "index.html": "/WordleMaster/index.html",
     "main.9714ea59.css.map": "/WordleMaster/static/css/main.9714ea59.css.map",
-    "main.04cf5420.js.map": "/WordleMaster/static/js/main.04cf5420.js.map",
+    "main.b87d9a29.js.map": "/WordleMaster/static/js/main.b87d9a29.js.map",
     "787.635508fe.chunk.js.map": "/WordleMaster/static/js/787.635508fe.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9714ea59.css",
-    "static/js/main.04cf5420.js"
+    "static/js/main.b87d9a29.js"
   ]
 }
