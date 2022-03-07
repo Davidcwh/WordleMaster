@@ -27,4 +27,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN_GITHUB }}
           branch: gh-pages
-          folder: build 
+          folder: frontend/build 
