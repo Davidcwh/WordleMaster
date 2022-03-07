@@ -101,3 +101,6 @@ def post_best_guesses():
     body["bestGuesses"] = best_guesses
     response = jsonify(body)
     return response
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=5000, debug=True, threaded=True)
