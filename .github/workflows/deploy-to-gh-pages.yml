@@ -23,7 +23,6 @@ jobs:
           REACT_APP_WORD_LIST_FILE: ${{ secrets.REACT_APP_WORD_LIST_FILE }}
           NODE_TLS_REJECT_UNAUTHORIZED: ${{ secrets.NODE_TLS_REJECT_UNAUTHORIZED }}
 
-
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
